@@ -11,6 +11,7 @@ import ma.emsi.hospital.repositories.PatientRepository;
 import ma.emsi.hospital.repositories.RendezVousRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.function.Consumer;
 
 @Service
@@ -43,6 +44,7 @@ public class HospitalServiceImpl implements IHospitalService {
 
     @Override
     public RendezVous saveRendezVous(RendezVous rendezVous) {
+        rendezVous.setId(UUID.randomUUID().toString());
         return rendezVousRepository.save(rendezVous);
     }
 

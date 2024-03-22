@@ -1,6 +1,8 @@
 package ma.emsi.hospital;
 
+import ma.emsi.hospital.entities.Medecin;
 import ma.emsi.hospital.entities.Patient;
+import ma.emsi.hospital.repositories.MedecinRepository;
 import ma.emsi.hospital.repositories.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +19,8 @@ public class HospitalApplication  {
 		SpringApplication.run(HospitalApplication.class, args);
 	}
 @Bean
-	CommandLineRunner start(PatientRepository patientRepository){
+	CommandLineRunner start(PatientRepository patientRepository,
+							MedecinRepository medecinRepository){
 		return args->{
 			Stream.of("Mohammed","Hassan","Najat")
 					.forEach(name->{
@@ -26,6 +29,14 @@ public class HospitalApplication  {
 						patient.setNom(name);
 						patient.setMalade(false);
 						patientRepository.save(patient);
+					});
+			Stream.of("Medecin1","Medecin2","Medecin3")
+					.forEach(name->{
+						Medecin medecin =new Medecin ();
+						medecin.setNom(name);
+						medecin.setSpecialite(Math.random()>0.5?"Cardio":"Dentiset");
+
+						medecinRepository.save(medecin);
 					});
 
 		};

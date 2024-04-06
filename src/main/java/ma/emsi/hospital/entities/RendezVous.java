@@ -26,4 +26,5 @@ public class RendezVous {
     private Medecin medecin;
     @OneToOne(mappedBy = "rendezVous")
     private Consultation consultation;
+
 }

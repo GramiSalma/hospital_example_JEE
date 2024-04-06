@@ -59,7 +59,7 @@ public class HospitalApplication  {
 			Consultation consultation=new Consultation();
 			consultation.setDateConsultation(new Date());
 			consultation.setRendezVous(rendezVous);
-			consultation.setRapport("Rapport de la cnsultation ....");
+			consultation.setRapport("Rapport de la consultation ....");
 			hospitalService.saveConsultation(consultation);
 
 
